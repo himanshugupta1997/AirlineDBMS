@@ -7,25 +7,10 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
 
-var Router = express.router;
 
-app.get('/', function (req, res) {
+app.use('/', express.static(__dirname + '/public_html'));
 
-    res.render('index', {
-
-    });
-
-});
-
-app.get('/admin', function (req, res) {
-
-    res.render('admin', {
-
-    });
-
-});
 
 app.listen(5000, function () {
 
