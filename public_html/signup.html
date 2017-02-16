@@ -22,27 +22,91 @@
         <div class="col s12 m2 l2"></div>
     </div>
     <br>
+    <div class="row" id="error" style="display: none">
+
+
+
+    </div>
+    <br>
     <div class="row">
         <div class="col s12 m3 l3">
         </div>
         <div class="col s12 m6 l6">
-            <form action='signup' method='POST'>
+
                 <div class="input-field">
                     <input type="text" class="validate blue-text text-darken-4" name="username" id="username" required="required">
                     <label for="username" class="blue-text text-darken-1">Username</label>
                 </div>
                 <div class="input-field">
-                    <input type="password"  required="required" class="validate blue-text text-darken-4 " name="pass" id="password">
+                    <input type="password"  required="required" class="validate blue-text text-darken-4 " name="password" id="password">
                     <label for="password" class="blue-text text-darken-1">Password</label>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action" style="margin-left: 33%">Submit
-
+                <div class="input-field">
+                    <input type="password"  required="required" class="validate blue-text text-darken-4 " name="confirmPassword" id="confirmPassword">
+                    <label for="confirmPassword" class="blue-text text-darken-1">Confirm Password</label>
+                </div>
+                <div class="input-field">
+                    <input type="number"  required="required" class="validate blue-text text-darken-4 " name="phone" id="phone">
+                    <label for="phone" class="blue-text text-darken-1">Mobile Number</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action" style="margin-left: 33%" id="submitButton">Submit
                 </button>
-            </form>
+
         </div>
         <div class="col s12 l3 m3">
         </div>
     </div>
 </div>
+<script>
+
+    $(function () {
+
+        if(localStorage.getItem('username') != null )
+        {
+            localStorage.clear();
+            alert("You have been logged out");
+        }
+
+        var submit = $('#submitButton');
+        submit.click(function () {
+
+            var username = $('#username').val();
+            var password = $('#password').val();
+            var confirmPassword = $('#confirmPassword').val();
+            var phone = $('#phone').val();
+            var error = null;
+            if(password != confirmPassword)
+            {
+                error = 'Please confirm password appropriately';
+                $('#error').html(error);
+                $('#error').css({'display' : 'block'});
+                return;
+            }
+
+            var obj = {
+
+                username : username,
+                password : password,
+                phone : phone
+            };
+            $.post('/customer/signup', obj, function (data, status) {
+
+                if(data.result == 0)
+                {
+                    error = 'username already exits. Please choose another one';
+                    $('#error').html(error);
+                    $('#error').css({'display' : 'block'});
+                }
+                else
+                {
+                    localStorage.setItem('username' , username);
+                    localStorage.setItem('customerId', data.customerId);
+                    window.location.href = "profile.html";
+                }
+            })
+        });
+    });
+
+</script>
 </body>
 </html>

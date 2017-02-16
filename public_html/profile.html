@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="author" content="Airline">
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="materialize/css/materialize.css">
     <script src="materialize/js/jquery.js"></script>
     <script src="materialize/js/materialize.js"></script>
 </head>
 <body>
 
-<a href="login.html">Login</a>
-<br>
-<a href="signup.html">Sign UP</a>
+<a href="index.html">Logout</a>
+
 
 <script>
 
     $(function () {
 
-        if(localStorage.getItem('username') != null)
+        if(localStorage.getItem('username') == null)
         {
-            localStorage.clear();
-            alert("You have been logged out");
+            alert("Please login to continue");
+            window.location.href = "index.html";
         }
 
     });
 
 </script>
-
 </body>
 </html>
