@@ -13,20 +13,16 @@
 
 <div class="container">
     <br><br>
-
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
             <div class="btn-lg btn-block btn-success" id="add_flight">ADD FLIGHT</div>
         </div>
     </div>
-
     <br><br>
     <div class="row" style="display: none" id="flight_details">
         <div class="container">
-
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-
                     <br>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12">
@@ -35,10 +31,7 @@
                                 <input type="text" name="Flight Id" id="Flight_Id" class="form-control input-lg"  required>
                             </div>
                         </div>
-
                     </div>
-
-
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
@@ -77,9 +70,7 @@
                             <input type="TIME" name="arrival_time" id="arrival_time" class="form-control input-lg" required>
                         </div>
                     </div>
-
-
-<br>
+                    <br>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label for="fare">FARE</label>
@@ -90,11 +81,7 @@
                             <input type="date" name="date" id="date" class="form-control input-lg" required>
                         </div>
                     </div>
-
                     <br>
-
-
-
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label for="total_seats">TOTAL SEATS</label>
@@ -115,10 +102,7 @@
                 <div class="btn-lg btn-block btn-danger" id="submit_details">SUBMIT</div>
             </div>
     </div>
-
     <br>
-
-
 </div>
 </div>
 <script src="jquery.js"></script>
@@ -141,6 +125,8 @@
     });
 
     $('#submit_details').click(function () {
+
+        $('#submit_details').html("Loading...");
         var obj={ };
         /**
          * flightId:details.flightId,
@@ -155,7 +141,7 @@
          date:details.date
          */
 
-        obj.flightId=$("#flight_id").val();
+        obj.flightId=$("#Flight_Id").val();
         obj.source = $("#source").val();
         obj.destination = $("#destination").val();
         obj.timeOfDeparture = $("#depart_time").val();
@@ -171,12 +157,15 @@
                 $("#flight_id").html(' ');
             }
             else {
+                console.log(obj);
                 $.post('/add_flight',obj,function (data,status) {
 
                     alert("Done. Flight Added");
 
-                })
+                });
+                $('#submit_details').html("SUBMIT");
             }
+
         });
     })
 </script>

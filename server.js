@@ -11,7 +11,7 @@ app.use('/',express.static('public_html'));
 
 var customer = require('./customer');
 var admin  =require('./admin');
-
+var flights = require('./flights');
 // Admin requests
 
 app.post('/add_flight',function (req,res) {
@@ -26,6 +26,28 @@ app.post('/check',function (req,res) {
         if(result==1)res.send("no");
         else res.send("yes");
     });
+});
+
+app.post('/flights/get', function (req, res) {
+
+    console.log("Flights get request");
+    flights.GetDetails({
+
+        source : req.body.source,
+        destination : req.body.destination,
+        date : req.body.date
+    }, function (docs) {
+
+        console.log("Sending Data");
+        console.log(docs);
+
+        res.send({
+            result : docs
+        });
+
+    })
+
+
 });
 
 // Customer Requests

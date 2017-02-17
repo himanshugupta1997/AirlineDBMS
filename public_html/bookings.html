@@ -51,13 +51,79 @@
 
         <div class="col s12 m3 l3"></div>
     </div>
+    <div class="row" id="result">
+
+
+
+    </div>
 </div>
 <script>
     $(document).ready(function() {
         $('select').material_select();
+        $('#submit').click(function () {
+
+            $('#submit').html("Loading....");
+            $('#result').html('');
+            var source = $('#source').val();
+            var destination = $('#destination').val();
+            var date = $('#date').val();
+            var obj = {
+                source : source,
+                destination : destination,
+                date : date
+            };
+
+            if(source == null || source == '' || destination == '' || destination == null || date == null || date == '')
+            {
+                alert("Please fill all the details");
+                $('#submit').html("Search Flights");
+            }
+            else
+            {
+                $.post('/flights/get', obj, function (data, status) {
+
+                    console.log(data.result);
+                    if(data.result.length == 0)
+                    {
+                        $('#result').html("No flights exists");
+                    }
+                    else {
+                     //   $('#result').html(data.result);
+                        var str = '<table id="tt" class="responsive-table  bordered blue-text striped"><thead><tr><td>Flight Id</td><td>Date</td><td>Source</td><td>Destination</td><td>Arrival Time</td><td>Departure Time</td><td>Fare</td><td>Available Seats<td></tr></thead>';
+
+                        for(var i = 0 ; i < data.result.length; ++i)
+                        {
+                            str += '<tr>';
+                            str += '<td>'  + data.result[i].flightId+ '</td>';
+                            str += '<td>'  + data.result[i].date+ '</td>';
+                            str += '<td>'  + data.result[i].source+ '</td>';
+                            str += '<td>'  + data.result[i].destination+ '</td>';
+                            str += '<td>'  + data.result[i].timeOfArrival+ '</td>';
+                            str += '<td>'  + data.result[i].timeOfDeparture+ '</td>';
+                            str += '<td>'  + data.result[i].fare+ '</td>';
+                            str += '<td>'  + data.result[i].totalAvailable+ '</td>';
+                            str += '</tr>';
+
+                        }
+
+                        str += '</table>';
+                        $('#result').html(str);
+                    }
+                    $('#submit').html("Search Flights");
+
+
+
+                    /*<table id="tt" class="responsive-table  bordered blue-text striped"><thead><tr>td>Flight Id</td><td>Date</td><td>Source</td><td>Destination</td><td>Arrival Time</td><td>Departure Time</td><td>Fare</td><td>Available Seats<td></tr></thead>
+                     */
+
+
+                });
+            }
+
+
+        });
     });
 
 </script>
-
 </body>
 </html>
