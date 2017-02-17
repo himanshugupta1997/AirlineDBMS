@@ -79,10 +79,41 @@ function SignUp(obj, callback) {
 
 }
 
+function Profile(obj, callback) {
+
+    mongoClient.connect(url, function (err, db) {
+
+        if(err)
+            throw err;
+
+        var handler = db.collection('customer');
+        handler.find({username : obj.username}).toArray(function (err, docs) {
+
+            if(err)
+                throw err;
+
+            if(docs.length == 0)
+            {
+                callback(0 ,null);
+            }
+            else
+            {
+                callback(1, docs[0]);
+            }
+
+
+
+        });
+
+
+    });
+}
+
 
 module.exports = {
 
     login : Login,
-    signUp : SignUp
+    signUp : SignUp,
+    GetProfile : Profile
 
 };

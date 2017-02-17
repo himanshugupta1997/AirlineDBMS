@@ -13,6 +13,42 @@
 
 <a href="index.html">Logout</a>
 
+<div class="container">
+    <div class="row" id="profile" style="display: none">
+        <div class="col s12 m3 l3">
+        </div>
+        <div class="col s12 m6 l6" id="details">
+        </div>
+        <div class="col s12 m3 l3">
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col s12 l3 m3"></div>
+        <div class="col s12 l6 m6" id="BookingHistory">
+
+        </div>
+        <div class="col s12 m3 l3"></div>
+
+    </div>
+    <div class="row">
+
+        <div class="col s12 l3 m3">
+
+          <a href="bookings.html">  <button class="btn">Book Flight</button>
+          </a>
+        </div>
+        <div class="col s12 l6 m6">
+
+        </div>
+        <div class="col s12 m3 l3"></div>
+
+
+    </div>
+</div>
+
+
+
 
 <script>
 
@@ -23,9 +59,58 @@
             alert("Please login to continue");
             window.location.href = "index.html";
         }
+        else
+        {
+            $('#profile').css({'display' : 'block'});
+            $('#details').html('Loading..');
+            $.post('/customer/profile', {
+                username : localStorage.getItem('username'),
+                customerId : localStorage.getItem('customerId')
+            }, function (data, status) {
+
+                if(data.result == 0)
+                {
+                    alert("invalid authentication");
+                    window.location.href = "index.html";
+                }
+                else
+                {
+
+
+                    var str = '';
+                    str += 'Username : ';
+                    str += data.user.username + '<br>';
+                    str += 'Phone : ';
+                    str += data.user.phone;
+                    $('#details').html(str);
+                    if(data.user.bookingHistory.length == 0)
+                    {
+                        $('#BookingHistory').html("You don't have any bookings till now")
+                    }
+                    else
+                    {
+                        /* Something needs to be done here. */
+                    }
+
+
+                }
+
+        });
+        }
 
     });
 
 </script>
 </body>
+<style>
+    .row
+    {
+        width: 100%;
+    }
+    .container
+    {
+        width: 100%;
+    }
+
+</style>
 </html>

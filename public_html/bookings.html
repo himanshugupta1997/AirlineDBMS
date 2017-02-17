@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Airline">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Book Flights</title>
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.css">
+    <script src="materialize/js/jquery.js"></script>
+    <script src="materialize/js/materialize.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m3 l3"></div>
+        <div class="col s12 m6 l6 input-field">
+
+                <select  id="source">
+                    <option value="DELHI">DELHI</option>
+                    <option value="MUMBAI">MUMBAI</option>
+                    <option value="CHENNAI">CHENNAI</option>
+                    <option value="KOLKATA">KOLKATA</option>
+                    <option value="BANGLORE">BANGALORE</option>
+                    <option value="LUCKNOW">LUCKNOW</option>
+                </select>
+            <label for="source">SOURCE</label>
+            <br>
+            <div class="input-field">
+                <select id="destination">
+
+                    <option value="DELHI">DELHI</option>
+                    <option value="MUMBAI">MUMBAI</option>
+                    <option value="CHENNAI">CHENNAI</option>
+                    <option value="KOLKATA">KOLKATA</option>
+                    <option value="BANGLORE">BANGALORE</option>
+                    <option value="LUCKNOW">LUCKNOW</option>
+                </select>
+                <label for="destination">DESTINATION</label>
+            </div>
+            <br>
+            <div class="input-field">
+                <label for="date" class="active">Date</label>
+                <input type="date" id="date" name="date">
+            </div>
+
+            <BR>
+            <button class="btn" id="submit">Search Flights</button>
+
+        </div>
+
+        <div class="col s12 m3 l3"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+</script>
+
+</body>
+</html>

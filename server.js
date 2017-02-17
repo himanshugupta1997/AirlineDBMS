@@ -12,6 +12,13 @@ app.use('/',express.static('public_html'));
 var customer = require('./customer');
 var admin  =require('./admin');
 
+// Admin requests
+
+app.post('/add_flight',function (req,res) {
+    admin.addFlight(req.body,function (result) {
+        res.end();
+    });
+});
 
 
 app.post('/check',function (req,res) {
@@ -21,6 +28,7 @@ app.post('/check',function (req,res) {
     });
 });
 
+// Customer Requests
 
 app.post('/customer/login', function (req, res) {
 
@@ -49,7 +57,7 @@ app.post('/customer/signup', function (req, res) {
         username : req.body.username,
         password : md5(req.body.password),
         phone : req.body.phone,
-        bookingHistory : {}
+        bookingHistory : []
               };
     customer.signUp(obj, function (result, id) {
         res.send(
@@ -61,13 +69,24 @@ app.post('/customer/signup', function (req, res) {
     });
 });
 
+app.post('/customer/profile', function (req, res) {
 
-app.post('/add_flight',function (req,res) {
-    admin.addFlight(req.body,function (result) {
-       res.end();
-    });
+      var obj = {
+          username : req.body.username,
+          id : req.body.customerId
+      };
+
+      customer.GetProfile(obj, function (result, details) {
+
+          res.send({
+              result : result,
+              user : details
+          })
+
+      });
+
+
 });
-
 
 app.listen(5000, function () {
 

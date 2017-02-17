@@ -67,10 +67,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label for="depart_time">DEPARTURE TIME</label>
@@ -145,16 +141,29 @@
     });
 
     $('#submit_details').click(function () {
-        var obj={};
+        var obj={ };
+        /**
+         * flightId:details.flightId,
+         source:details.source,
+         destination:details.destination,
+         fare:details.fare,
+         timeOfDeparture:details.timeOfDeparture,
+         timeOfArrival:details.timeOfArrival,
+         totalSeats:details.totalSeats,
+         totalAvailable:details.totalAvailable,
+         totalFilled:details.totalFilled,
+         date:details.date
+         */
+
         obj.flightId=$("#flight_id").val();
         obj.source = $("#source").val();
         obj.destination = $("#destination").val();
-        obj.depart_time = $("#depart_time").val();
-        obj.arrival_time = $("#arrival_time").val();
+        obj.timeOfDeparture = $("#depart_time").val();
+        obj.timeOfArrival = $("#arrival_time").val();
         obj.fare = $("#fare").val();
         obj.date = $("#date").val();
         obj.totalAvailable = $("#total_seats_avl").val();
-        obj.total_seats = $("#total_seats").val();
+        obj.totalSeats = $("#total_seats").val();
         console.log(obj);
         $.post('/check',{flightId:obj.flightId},function (data,status) {
             if(data=="no"){
@@ -163,6 +172,9 @@
             }
             else {
                 $.post('/add_flight',obj,function (data,status) {
+
+                    alert("Done. Flight Added");
+
                 })
             }
         });
