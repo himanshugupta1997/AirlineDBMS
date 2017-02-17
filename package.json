@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "assert": "^1.4.1",
     "body-parser": "^1.16.1",
     "ejs": "^2.5.5",
     "express": "^4.14.1",
     "md5": "^2.2.1",
-    "mongodb": "^2.2.24"
+    "mongodb": "^2.2.24",
+    "nodemon": "^1.11.0"
   }
 }
