@@ -11,11 +11,84 @@
 </head>
 <body>
 
-<a href="login.html">Login</a>
-<br>
-<a href="signup.html">Sign UP</a>
-<br>
-<a href="admin.html">ADMIN</a>
+<nav class="light-blue darken-4">
+    <div class="navbar-wrapper container">
+        <ul class="left">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="admin.html">ADMIN</a></li>
+        </ul>
+        <a href="/" class="brand-logo center">AIRLINE DBMS SYSTEM</a>
+
+        <ul class="right">
+            <li ><a href="signup.html">SignUp</a></li>
+            <li ><a  href="login.html">Login</a></li>
+        </ul>
+    </div>
+
+</nav>
+
+<div class="slider">
+    <ul class="slides">
+        <li>
+            <img src="http://farm5.static.flickr.com/4033/4620555397_96b8face25_b.jpg"> <!-- random image -->
+            <div class="caption center-align">
+                <h3>This is our big Tagline!</h3>
+                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+        </li>
+        <li>
+            <img src="http://cf.c.ooyala.com/s2OWQ1OTE6kYYMiKVJqFPuGk0GvLh3WR/AZ2ZgMjz0LFGHCPn4xMDoxOjBzMTt2bJ"> <!-- random image -->
+            <div class="caption left-align">
+                <h3>Left Aligned Caption</h3>
+                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+        </li>
+        <li>
+            <img src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/05/airplane-wallpaper-3-610x381.jpg"> <!-- random image -->
+            <div class="caption right-align">
+                <h3>Right Aligned Caption</h3>
+                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+        </li>
+        <li>
+            <img src="http://www.siwallpaperhd.com/wp-content/uploads/2016/02/wonderful_airplane_wallpaper_high_resolution.jpg"> <!-- random image -->
+            <div class="caption center-align">
+                <h3>This is our big Tagline!</h3>
+                <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </div>
+        </li>
+    </ul>
+</div>
+<footer class="page-footer light-blue darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">DBMS PROJECT</h5>
+                <p class="grey-text text-lighten-4">Airline database system</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">MADE BY </h5>
+                <ul>
+                    <li><p class="grey-text text-lighten-3" href="#!">Harshit Aggarwal-DTU/2k15/CO/059</p></li>
+                    <li><p class="grey-text text-lighten-3" href="#!">Harshit Walia   -DTU/2k15/CO/060</p></li>
+                    <li><p class="grey-text text-lighten-3" href="#!">Himanshu Gupta  -DTU/2k15/CO/060</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Copyright Text
+        </div>
+    </div>
+</footer>
+
+<script>
+    $(document).ready(function(){
+        $('.slider').slider();
+    });
+</script>
+
 <script>
 
     $(function () {
