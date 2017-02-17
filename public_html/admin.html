@@ -3,8 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/style.css">
+    <script src="jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
 </head>
-<body>
+<body style="display: none">
 
+
+<div class="container">
+    <br><br>
+
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="btn-lg btn-block btn-success" id="add_flight">ADD FLIGHT</div>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="row" style="display: none" id="flight_details">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="Flight_Id">FLIGHT ID</label>
+                                <input type="text" name="Flight Id" id="Flight_Id" class="form-control input-lg"  required>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label for="source">SOURCE</label>
+                                <select class="form-control" id="source">
+                                    <option>DELHI</option>
+                                    <option>MUMBAI</option>
+                                    <option>CHENNAI</option>
+                                    <option>KOLKATA</option>
+                                    <option>BANGALORE</option>
+                                    <option>LUCKNOW</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label for="destination">DESTINATION</label>
+                                <select class="form-control" id="destination">
+                                    <option>DELHI</option>
+                                    <option>MUMBAI</option>
+                                    <option>CHENNAI</option>
+                                    <option>KOLKATA</option>
+                                    <option>BANGALORE</option>
+                                    <option>LUCKNOW</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label for="depart_time">DEPARTURE TIME</label>
+                            <input type="TIME" name="depart_time" id="depart_time" class="form-control input-lg"  required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label for="arrival_time">ARRIVAL TIME</label>
+                            <input type="TIME" name="arrival_time" id="arrival_time" class="form-control input-lg" required>
+                        </div>
+                    </div>
+
+
+<br>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label for="fare">FARE</label>
+                            <input type="number" name="fare" id="fare" class="form-control input-lg"   required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label for="date">DATE</label>
+                            <input type="date" name="date" id="date" class="form-control input-lg" required>
+                        </div>
+                    </div>
+
+                    <br>
+
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label for="total_seats">TOTAL SEATS</label>
+                            <input type="number" name="total_seats" id="total_seats" class="form-control input-lg"   required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label for="total_seats_avl">TOTAL AVAILABLE SEATS</label>
+                            <input type="number" name="total_seats_avl" id="total_seats_avl" class="form-control input-lg"  required>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="btn-lg btn-block btn-danger" id="submit_details">SUBMIT</div>
+            </div>
+    </div>
+
+    <br>
+
+
+</div>
+</div>
+<script src="jquery.js"></script>
+    <script>
+    $(function () {
+
+        var val = prompt("Enter Admin Password");
+        if(val!='ADMIN'){
+            alert("Invalid Password Redirecting to home page");
+            window.location.href='index.html';
+        }
+        else {
+            $("body").css('display','block');
+        }
+    });
+
+    $('#add_flight').click(function () {
+        $("#flight_details").css("display","block");
+
+    });
+
+    $('#submit_details').click(function () {
+        var obj={};
+        obj.flightId=$("#flight_id").val();
+        obj.source = $("#source").val();
+        obj.destination = $("#destination").val();
+        obj.depart_time = $("#depart_time").val();
+        obj.arrival_time = $("#arrival_time").val();
+        obj.fare = $("#fare").val();
+        obj.date = $("#date").val();
+        obj.totalAvailable = $("#total_seats_avl").val();
+        obj.total_seats = $("#total_seats").val();
+        console.log(obj);
+        $.post('/check',{flightId:obj.flightId},function (data,status) {
+            if(data=="no"){
+                alert("Flight Id already used");
+                $("#flight_id").html(' ');
+            }
+            else {
+                $.post('/add_flight',obj,function (data,status) {
+                })
+            }
+        });
+    })
+</script>
 </body>
 </html>

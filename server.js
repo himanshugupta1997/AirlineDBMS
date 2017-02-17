@@ -1,6 +1,3 @@
-/**
- * Created by himanshu on 16/2/17.
- */
 
 var express = require('express');
 var app = express();
@@ -10,11 +7,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var md5 = require('md5');
 
-app.use('/', express.static(__dirname + '/public_html'));
+app.use('/',express.static('public_html'));
 
 var customer = require('./customer');
 var admin  =require('./admin');
-//var bookings = require('./bookings');
+
+
+
+app.post('/check',function (req,res) {
+    admin.checkFlight(req.body,function (result) {
+        if(result==1)res.send("no");
+        else res.send("yes");
+    });
+});
+
 
 app.post('/customer/login', function (req, res) {
 
@@ -52,6 +58,13 @@ app.post('/customer/signup', function (req, res) {
                 customerId : id
             }
         );
+    });
+});
+
+
+app.post('/add_flight',function (req,res) {
+    admin.addFlight(req.body,function (result) {
+       res.end();
     });
 });
 

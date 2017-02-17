@@ -18,8 +18,6 @@ function Login(obj, callback) {
 
             if(err)
                 throw err;
-
-
             console.log(docs);
             if(docs.length == 0)
             {
