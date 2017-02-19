@@ -8,43 +8,35 @@
     <link rel="stylesheet" type="text/css" href="materialize/css/materialize.css">
     <script src="materialize/js/jquery.js"></script>
     <script src="materialize/js/materialize.js"></script>
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-
 </head>
 <body>
 
 <nav class="light-blue darken-4">
-    <div class="navbar-wrapper container">
-        <ul class="left">
-            <li><a href="/">Home</a></li>
-        </ul>
-        <a href="/" class="brand-logo center">AIRLINE<i class="fa fa-plane" aria-hidden="true"></i> DBMS SYSTEM</a>
-
-        <ul class="right">
-            <li class="active"><a href="signup.html">SignUp</a></li>
-            <li ><a  href="login.html">Login</a></li>
-        </ul>
+    <div class="navbar-wrapper ">
+        <a href="/" class="brand-logo left" STYLE="left:5px">Airline</a>
+        <ul class="right brand-logo">
+            <a href="index.html">Logout</a></ul>
     </div>
 
 </nav>
-<div class="container">
-    <div class="row">
+<br /><br /><br />
+<div class="container"  >
+    <div class="row ">
         <div class="col s12 m3 l3"></div>
-        <div class="col s12 m6 l6 input-field">
-
-                <select  id="source">
+        <div class="col s12 m6 l6 input-field card-content" >
+              <select  id="source">
                     <option value="DELHI">DELHI</option>
                     <option value="MUMBAI">MUMBAI</option>
                     <option value="CHENNAI">CHENNAI</option>
                     <option value="KOLKATA">KOLKATA</option>
                     <option value="BANGLORE">BANGALORE</option>
                     <option value="LUCKNOW">LUCKNOW</option>
-                </select>
-            <label for="source">SOURCE</label>
+              </select>
+            <label for="source"><h6>SOURCE</h6></label>
             <br>
             <div class="input-field">
-                <select id="destination">
 
+                <select id="destination">
                     <option value="DELHI">DELHI</option>
                     <option value="MUMBAI">MUMBAI</option>
                     <option value="CHENNAI">CHENNAI</option>
@@ -52,11 +44,11 @@
                     <option value="BANGLORE">BANGALORE</option>
                     <option value="LUCKNOW">LUCKNOW</option>
                 </select>
-                <label for="destination">DESTINATION</label>
+                <label for="destination"><h6>DESTINATION</h6></label>
             </div>
             <br>
             <div class="input-field">
-                <label for="date" class="active">Date</label>
+                <label for="date" class="active"><h6>Date</h6></label>
                 <input type="date" id="date" name="date">
             </div>
 
@@ -64,10 +56,10 @@
             <button class="btn" id="submit">Search Flights</button>
 
         </div>
-
+        </div>
         <div class="col s12 m3 l3"></div>
     </div>
-    <div class="row" id="result">
+    <div class="row table-of-contents" id="result">
 
 
 
@@ -89,7 +81,7 @@
                     <li><p class="grey-text text-lighten-3" href="#!">Himanshu Gupta  -DTU/2k15/CO/060</a></li>
                 </ul>
             </div>
-        </div>
+
     </div>
     <div class="footer-copyright">
         <div class="container">
