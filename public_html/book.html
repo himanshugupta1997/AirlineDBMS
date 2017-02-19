@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Airline">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Book Flights</title>
+    <link rel="stylesheet" type="text/css" href="materialize/css/materialize.css">
+    <script src="materialize/js/jquery.js"></script>
+    <script src="materialize/js/materialize.js"></script>
+</head>
+<body>
+<nav class="light-blue darken-4">
+    <div class="navbar-wrapper ">
+        <a href="/" class="brand-logo left" STYLE="left:5px">Airline</a>
+        <ul class="right brand-logo">
+            <a href="index.html">Logout</a></ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <br>
+        <br>
+        <div class="col s12 m2 l2"></div>
+        <div class="col s12 m5 l5">
+
+            <div class="input-field">
+
+                <label for="flight_id">Flight Id</label>
+                <input type="number" id="flight_id" name="flight_id" class="active">
+
+            </div>
+
+        </div>
+        <div class="col s12 m1 l1"></div>
+        <div class="col s12 m4 l4">
+
+            <button class="btn-block btn" id="get_details">Get Details</button>
+            <br>
+            <button class="btn-block btn" id="book">Book Flight</button>
+            <br>
+
+        </div>
+    </div>
+    <div class="row" style="display: none" id="details">
+
+        <div class="col s12 m1 l1">
+
+        </div>
+        <div class="col s12 m10 l10" id="details_table">
+
+        </div>
+        <div class="col s12 m1 l1">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+
+    $(function () {
+
+        if(localStorage.getItem('username') == null)
+        {
+            alert("Please login to continue");
+            window.location.href = "index.html";
+        }
+
+        $('#get_details').click(function () {
+
+            var id = $('#flight_id').val();
+            if(id == '' || id == null)
+            {
+                alert("Please enter flight id to continue");
+                return;
+            }
+
+            var obj = {
+                id : id;
+            }
+
+
+            $.post('/flight/get', obj, function (data, status) {
+
+            });
+
+
+        });
+
+        $('#book').click(function () {
+
+            var id = $('#flight_id').val();
+            if(id == '' || id == null)
+            {
+                alert("Please enter flight id to continue");
+                return;
+            }
+
+            var obj = {
+                id : id;
+        }
+
+
+            $.post('/flight/book', obj, function (data, status) {
+
+            });
+
+        });
+
+    });
+
+</script>
+
+</body>
+<style>
+
+    .row
+    {
+        width: 100%;
+    }
+
+    .container
+    {
+        width: 100%;
+    }
+
+</style>
+</html>

@@ -73,6 +73,13 @@
 
 <script>
     $(document).ready(function() {
+
+        if(localStorage.getItem('username') == null)
+        {
+            alert("Please login to continue");
+            window.location.href = "index.html";
+        }
+
         $('select').material_select();
         $('#submit').click(function () {
 
