@@ -10,14 +10,12 @@
     <script src="materialize/js/materialize.js"></script>
 </head>
 <body>
-
 <nav class="light-blue darken-4">
     <div class="navbar-wrapper ">
         <a href="/" class="brand-logo left" STYLE="left:5px">Airline</a>
         <ul class="right brand-logo">
             <a href="index.html">Logout</a></ul>
     </div>
-
 </nav>
 <br /><br /><br />
 <div class="container"  >
@@ -35,7 +33,6 @@
             <label for="source"><h6>SOURCE</h6></label>
             <br>
             <div class="input-field">
-
                 <select id="destination">
                     <option value="DELHI">DELHI</option>
                     <option value="MUMBAI">MUMBAI</option>
@@ -52,43 +49,27 @@
                 <input type="date" id="date" name="date">
             </div>
 
-            <BR>
-            <button class="btn" id="submit">Search Flights</button>
+            <br>
+
+            <div class="row">
+                <div class="col s12 l3 m3"></div>
+                <div class="col s12 l6 m6">
+
+                    <button class="btn btn-block btn-large" id="submit">Search Flights</button>
+
+                </div>
+                <div class="col s12 l3 m3"></div>
+            </div>
+
 
         </div>
         </div>
         <div class="col s12 m3 l3"></div>
     </div>
-    <div class="row table-of-contents" id="result">
-
+    <div class="row table-of-contents" id="result" style="width: 80%; border: 2px solid black; display: none">
 
 
     </div>
-</div>
-
-<footer class="page-footer light-blue darken-4">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">DBMS PROJECT</h5>
-                <p class="grey-text text-lighten-4">Airline database system</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">MADE BY </h5>
-                <ul>
-                    <li><p class="grey-text text-lighten-3" href="#!">Harshit Aggarwal-DTU/2k15/CO/059</p></li>
-                    <li><p class="grey-text text-lighten-3" href="#!">Harshit Walia   -DTU/2k15/CO/060</p></li>
-                    <li><p class="grey-text text-lighten-3" href="#!">Himanshu Gupta  -DTU/2k15/CO/060</a></li>
-                </ul>
-            </div>
-
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2017 Copyright Text
-        </div>
-    </div>
-</footer>
 
 <script>
     $(document).ready(function() {
@@ -121,8 +102,11 @@
                         $('#result').html("No flights exists");
                     }
                     else {
+
+                        $('#result').css({'display' : 'block'});
+
                      //   $('#result').html(data.result);
-                        var str = '<table id="tt" class="responsive-table  bordered blue-text striped"><thead><tr><td>Flight Id</td><td>Date</td><td>Source</td><td>Destination</td><td>Arrival Time</td><td>Departure Time</td><td>Fare</td><td>Available Seats<td></tr></thead>';
+                        var str = '<table id="tt" class="responsive-table  bordered blue-text striped"><thead><tr><td>Flight Id</td><td>Date</td><td>Source</td><td>Destination</td><td>Departure Time</td><td>Arrival Time</td><td>Fare</td><td>Available Seats<td></tr></thead>';
 
                         for(var i = 0 ; i < data.result.length; ++i)
                         {
@@ -131,8 +115,8 @@
                             str += '<td>'  + data.result[i].date+ '</td>';
                             str += '<td>'  + data.result[i].source+ '</td>';
                             str += '<td>'  + data.result[i].destination+ '</td>';
-                            str += '<td>'  + data.result[i].timeOfArrival+ '</td>';
                             str += '<td>'  + data.result[i].timeOfDeparture+ '</td>';
+                            str += '<td>'  + data.result[i].timeOfArrival+ '</td>';
                             str += '<td>'  + data.result[i].fare+ '</td>';
                             str += '<td>'  + data.result[i].totalAvailable+ '</td>';
                             str += '</tr>';
