@@ -55,24 +55,28 @@
     <br />
     <div class="row">
         <div class="row">
-            <div class="col s12 l4 m4"></div>
+            <div class="col s12 l1 m1"></div>
             <div class="col s12 l4 m4">
                 <a href="bookings.html">
-                <div class="btn btn-block green" id="submit_details">SEARCH FLIGHTS</div>
+                <div class="btn btn-block green">SEARCH FLIGHTS</div>
                 </a>
             </div>
-            <div class="col s12 l4 m4"></div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l4 m4">
+
+                <a href="book.html">
+                    <div class="btn btn-block green" id="book">BOOK FLIGHTS</div>
+                </a>
+
+            </div>
+            <div class="col s12 l1 m1"></div>
         </div>
+    </div>
 </div>
-</div>
-
-
-
-
 <script>
 
     $(function () {
-
+        $(".button-collapse").sideNav();
         if(localStorage.getItem('username') == null)
         {
             alert("Please login to continue");
@@ -104,14 +108,7 @@
                     str += data.user.phone;
                     str += '</h5>';
                     $('#details').html(str);
-                    if(data.user.bookingHistory.length == 0)
-                    {
-                        $('#BookingHistory').html("You don't have any bookings till now")
-                    }
-                    else
-                    {
-                        /* Something needs to be done here. */
-                    }
+
 
 
                 }

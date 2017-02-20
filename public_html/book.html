@@ -23,23 +23,17 @@
         <br>
         <div class="col s12 m2 l2"></div>
         <div class="col s12 m5 l5">
-
             <div class="input-field">
-
                 <label for="flight_id">Flight Id</label>
                 <input type="number" id="flight_id" name="flight_id" class="active">
-
             </div>
-
         </div>
         <div class="col s12 m1 l1"></div>
         <div class="col s12 m4 l4">
-
             <button class="btn-block btn" id="get_details">Get Details</button>
             <br>
             <button class="btn-block btn" id="book">Book Flight</button>
             <br>
-
         </div>
     </div>
     <div class="row" style="display: none" id="details">
@@ -62,6 +56,7 @@
 <script>
 
     $(function () {
+        $(".button-collapse").sideNav();
 
         if(localStorage.getItem('username') == null)
         {
@@ -71,6 +66,9 @@
 
         $('#get_details').click(function () {
 
+            $('#get_details').html("Loading...");
+            $('#details').css({'display' : 'none'});
+
             var id = $('#flight_id').val();
             if(id == '' || id == null)
             {
@@ -79,11 +77,38 @@
             }
 
             var obj = {
-                id : id;
-            }
-
-
+                id : id
+            };
+            
             $.post('/flight/get', obj, function (data, status) {
+                console.log(data);
+                if(data.result == 0)
+                {
+                    alert("No flight exists with this id");
+                    $('#flight_id').val("");
+                }
+                else
+                {
+                    $('#details').css({'display' : 'block'});
+                    var str = '';
+                    var ans = data.docs[0];
+                    str += '<table id="tt" class="responsive-table  bordered blue-text striped"><thead><tr><td>Flight Id</td><td>Date</td><td>Source</td><td>Destination</td><td>Departure Time</td><td>Arrival Time</td><td>Fare</td><td>Available Seats<td></tr></thead>';
+
+                    
+                        str += '<tr>';
+                        str += '<td>'  + ans.flightId+ '</td>';
+                        str += '<td>'  + ans.date+ '</td>';
+                        str += '<td>'  + ans.source+ '</td>';
+                        str += '<td>'  + ans.destination+ '</td>';
+                        str += '<td>'  + ans.timeOfDeparture+ '</td>';
+                        str += '<td>'  + ans.timeOfArrival+ '</td>';
+                        str += '<td>'  + ans.fare+ '</td>';
+                        str += '<td>'  + ans.totalAvailable+ '</td>';
+                        str += '</tr>';
+                        $('#details_table').html(str);
+                    
+                }
+                $('#get_details').html("Get Details");
 
             });
 
@@ -92,6 +117,7 @@
 
         $('#book').click(function () {
 
+            $('#book').html("Loading...");
             var id = $('#flight_id').val();
             if(id == '' || id == null)
             {
@@ -100,15 +126,29 @@
             }
 
             var obj = {
-                id : id;
-        }
-
-
+                flightId : id,
+                customerId : localStorage.getItem('customerId')
+        };
             $.post('/flight/book', obj, function (data, status) {
+
+                if(data.result == 0)
+                {
+                    alert("No flight exists with given id");
+                }
+                else if(data.result == 1)
+                {
+                    alert("No seats available in the flight! Sorry");
+                }
+                else
+                {
+                    alert("Congrats! Flight Booked");
+                }
+                $('#book').html("Book Flight");
 
             });
 
         });
+
 
     });
 

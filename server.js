@@ -4,9 +4,8 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+var Bookings = require('./bookings');
 var md5 = require('md5');
-
 app.use('/',express.static('public_html'));
 
 var customer = require('./customer');
@@ -107,6 +106,56 @@ app.post('/customer/profile', function (req, res) {
 
       });
 
+
+});
+
+// Flight Requests
+
+app.post('/flight/get', function (req, res) {
+
+    flights.GetDetailsById(req.body.id, function (result, docs) {
+
+        res.send({
+            result : result,
+            docs : docs
+        });
+
+    });
+
+
+});
+
+app.post('/flight/book', function (req, res) {
+
+    flights.BookFlight(req.body.flightId, function (result, docs) {
+
+        if(result == 0)
+        {
+            res.send({
+
+                result : 0
+
+            });
+        }
+        else if(result == 1)
+        {
+            res.send({
+                result  : 1
+            })
+        }
+        else
+        {
+            Bookings.AddBooking(req.body.customerId, req.body.flightId, function () {
+
+                res.send({
+
+                    result : 2
+                });
+
+            });
+        }
+
+    });
 
 });
 
