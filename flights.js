@@ -1,15 +1,7 @@
-/**
- * Created by himanshu on 16/2/17.
- */
-
 
 var mongodb = require('mongodb');
 const mongoClient = mongodb.MongoClient;
 const url = "mongodb://airline:airline@ds153689.mlab.com:53689/airlinedbms";
-
-
-
-// Write your functions here and remember to export them.
 
 function GetDetails(obj, callback)
 {
@@ -86,7 +78,6 @@ function BookFlight(id, callback) {
                 {
                     --docs[0].totalAvailable;
                     handler.updateOne({flightId : id}, {$set : docs[0]}, function (err, r) {
-
                         if (err)
                             throw err;
 
@@ -101,11 +92,38 @@ function BookFlight(id, callback) {
         });
 
     });
-
 }
+
+
+
+function getAllFlights(callback) {
+    mongoClient.connect(url,function (error,database) {
+        if(error)throw error;
+        var handler = database.collection('flight');
+        handler.find({}).toArray(function (err,result) {
+            database.close();
+            callback(result);
+        })
+    })
+}
+
+function deleteFLight(id,callback) {
+    mongoClient.connect(url,function (error,database) {
+        if(error)throw error;
+        var handler = database.collection('flight');
+        handler.findOneAndDelete({flightId:id},function (error,result) {
+            if(error)throw error;
+            database.close();
+            callback();
+        })
+    })
+}
+
 module.exports = {
 
     GetDetails : GetDetails,
     GetDetailsById : GetDetailsUsingId,
-    BookFlight : BookFlight
+    BookFlight : BookFlight,
+    getAllFlights:getAllFlights,
+    deleteFLight:deleteFLight
 };

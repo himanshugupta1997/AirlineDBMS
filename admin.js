@@ -17,7 +17,6 @@ function addFLight(details,callback) {
                 timeOfArrival:details.timeOfArrival,
                 totalSeats:details.totalSeats,
                 totalAvailable:details.totalAvailable,
-            //    totalFilled:details.totalFilled,
                 date:details.date
             },function (error,result) {
                 assert.equal(error,null);

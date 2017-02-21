@@ -19,13 +19,20 @@
 <div class="container">
     <br><br>
     <div class="row">
-        <div class="s12 m4 l4 col"></div>
+        <div class="s12 m4 l4 col"> <div class="btn btn-block red btn-large" id="get_bookings"> GET ALL BOOKINGS</div></div>
         <div class="col s12 m4 l4">
             <div class="btn btn-block red btn-large" id="add_flight">ADD FLIGHT</div>
         </div>
-        <div class="s12 m4 l4 col"></div>
+        <div class="s12 m4 l4 col"> <div class="btn btn-block red btn-large" id="get_flights">GET ALL FLIGHTS</div></div>
     </div>
     <br><br>
+
+
+
+    <!-- ADD FLIGHTS  !--->
+
+
+
     <div class="container" style="display: none" id="flight_details">
     <div class="row">
                         <div class="col s12 l3 m3"></div>
@@ -119,9 +126,63 @@
     </div>
     <br>
 </div>
+
+
+
+
+    <!-- ALL FLIGHT DETAILS  !-->
+
+
+
+
+    <div class="container" id="all_flights" style="display: none">
+        <div class="row">
+            <div class="col sm12 m1 l1"></div>
+            <div class="col sm12 m10 l10">
+
+                <table class="bordered  centered" >
+                    <thead>
+                    <tr>
+                        <th>Flight Id</th>
+                        <th >Source</th>
+                        <th >Destination</th>
+                        <th>Arrival</th>
+                        <th>Departure</th>
+                        <th>Fare</th>
+                        <th>Total Seats</th>
+                        <th>Seats Left</th>
+                        <th>Date</th>
+                        <th>Remove Flight</th>
+                    </tr>
+                    </thead>
+                    <tbody id="flight-table">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col sm12 m1 l1"></div>
+        </div>
+    </div>
+
+
+
+    <!--BOOKINGS HISTORY!--->
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col sm12 m2 l2"></div>
+            <div class="col sm12 m8 l8">
+
+            </div>
+            <div class="col sm12 m2 l2"></div>
+
+        </div>
+    </div>
 </div>
 <script>
+
     $(function () {
+
         $(".button-collapse").sideNav();
         $('select').material_select();
         var val = prompt("Enter Admin Password");
@@ -133,24 +194,15 @@
             $("body").css('display','block');
         }
     });
+
     $('#add_flight').click(function () {
+        $("#all_flights").css("display","none");
         $("#flight_details").css("display","block");
     });
+
     $('#submit_details').click(function () {
         $('#submit_details').html("Loading...");
         var obj={ };
-        /**
-         * flightId:details.flightId,
-         source:details.source,
-         destination:details.destination,
-         fare:details.fare,
-         timeOfDeparture:details.timeOfDeparture,
-         timeOfArrival:details.timeOfArrival,
-         totalSeats:details.totalSeats,
-         totalAvailable:details.totalAvailable,
-         totalFilled:details.totalFilled,
-         date:details.date
-         */
         obj.flightId=$("#Flight_Id").val();
         obj.source = $("#source").val();
         obj.destination = $("#destination").val();
@@ -180,7 +232,46 @@
                 $('#submit_details').html("SUBMIT");
             }
         });
-    })
+    });
+
+
+
+    $("#get_flights").click(function () {
+        $("#flight_details").css("display","none");
+        $("#all_flights").css("display","block");
+
+        $.post('/getflights',function (data,status) {
+            localStorage.clear();
+            var arr  = JSON.parse(JSON.stringify(data));
+            localStorage.setItem('flights',JSON.stringify(data));
+            var str='';
+            for(var i = 0 ; i < arr.length; ++i)
+            {
+                str += '<tr  id="td'+i+'">';
+                str += '<td>'  + arr[i].flightId+ '</td>';
+                str += '<td>'  + arr[i].source+ '</td>';
+                str += '<td>'  + arr[i].destination+ '</td>';
+                str += '<td>'  + arr[i].timeOfArrival+ '</td>';
+                str += '<td>'  + arr[i].timeOfDeparture+ '</td>';
+                str += '<td>'  + arr[i].fare+ '</td>';
+                str += '<td>'  + arr[i].totalSeats+ '</td>';
+                str += '<td>'  + arr[i].totalAvailable+ '</td>';
+                str += '<td>'  + arr[i].date+ '</td>';
+                str += '<td >'+'<div class="btn btn-block green" onclick="func('+i+')">REMOVE</div> '+'</td>';
+                str += '</tr>';
+            }
+            $("#flight-table").html(str);
+        });
+    });
+
+    function func(x) {
+        console.log(x);
+        var arr = JSON.parse(localStorage.getItem('flights'));
+        $("#td"+x).css('text-decoration','line-through');
+      $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {});
+    }
+
+
 </script>
 </body>
 <style>
