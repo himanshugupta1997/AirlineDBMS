@@ -80,6 +80,7 @@
         var submit = $('#submitButton');
         submit.click(function () {
 
+
             var username = $('#username').val();
             var password = $('#password').val();
             var confirmPassword = $('#confirmPassword').val();
@@ -93,6 +94,7 @@
                 return;
             }
 
+            submit.html("Loading...");
             var obj = {
 
                 username : username,
@@ -113,6 +115,7 @@
                     localStorage.setItem('customerId', data.customerId);
                     window.location.href = "profile.html";
                 }
+                submit.html("Submit");
             })
         });
     });

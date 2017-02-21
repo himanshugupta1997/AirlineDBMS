@@ -1,8 +1,8 @@
 
-var mongodb = require('mongodb');
-const mongoClient = mongodb.MongoClient;
-const url = "mongodb://airline:airline@ds153689.mlab.com:53689/airlinedbms";
 
+var mongodb = require('mongodb');
+var mongoClient = mongodb.MongoClient;
+const url = "mongodb://airline:airline@ds153689.mlab.com:53689/airlinedbms";
 function GetDetails(obj, callback)
 {
     mongoClient.connect(url, function (err, db) {
@@ -97,14 +97,15 @@ function BookFlight(id, callback) {
 
 
 function getAllFlights(callback) {
+
     mongoClient.connect(url,function (error,database) {
         if(error)throw error;
         var handler = database.collection('flight');
         handler.find({}).toArray(function (err,result) {
             database.close();
             callback(result);
-        })
-    })
+        });
+    });
 }
 
 function deleteFLight(id,callback) {
@@ -112,8 +113,11 @@ function deleteFLight(id,callback) {
         if(error)throw error;
         var handler = database.collection('flight');
         handler.findOneAndDelete({flightId:id},function (error,result) {
-            if(error)throw error;
+            if(error)
+                throw error;
             database.close();
+            console.log("Deleted");
+            console.log(result);
             callback();
         })
     })
