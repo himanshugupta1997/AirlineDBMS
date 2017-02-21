@@ -239,6 +239,7 @@
     $("#get_flights").click(function () {
         $("#flight_details").css("display","none");
         $("#all_flights").css("display","block");
+        $('#flight-table').html("Loading...");
 
         $.post('/getflights',function (data,status) {
             localStorage.clear();
@@ -264,11 +265,16 @@
         });
     });
 
+
     function func(x) {
         console.log(x);
         var arr = JSON.parse(localStorage.getItem('flights'));
         $("#td"+x).css('text-decoration','line-through');
-      $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {});
+      $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {
+
+          alert("Flight Deleted from database");
+
+      });
     }
 
 
