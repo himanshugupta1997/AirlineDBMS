@@ -159,19 +159,42 @@
 
 
     <!--BOOKINGS HISTORY!--->
-    <div class="container">
+
+    <div class="container" id="booking_history" style="display: none">
         <div class="row">
-            <div class="col sm12 m2 l2"></div>
-            <div class="col sm12 m8 l8">
+            <div class="col sm12 m1 l1"></div>
+            <div class="col sm12 m10 l10">
+                <table class="bordered  centered" >
+                    <thead>
+                    <tr>
+                        <th>Customer Id</th>
+                        <th>Customer Name</th>
+                        <th>Flight Id</th>
+                        <th >Source</th>
+                        <th >Destination</th>
+                        <th>Arrival</th>
+                        <th>Departure</th>
+                        <th>Fare</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody id="bookings_table">
+                    </tbody>
+                </table>
             </div>
-            <div class="col sm12 m2 l2"></div>
+            <div class="col sm12 m1 l1"></div>
         </div>
     </div>
 </div>
 <script>
+
+
+
     $(function () {
+        $("body").css('display','block');
         $(".button-collapse").sideNav();
         $('select').material_select();
+        /*
         var val = prompt("Enter Admin Password");
         if(val!='ADMIN'){
             alert("Invalid Password Redirecting to home page");
@@ -179,12 +202,18 @@
         }
         else {
             $("body").css('display','block');
-        }
+        }*/
     });
+
+
     $('#add_flight').click(function () {
         $("#all_flights").css("display","none");
+        $("#booking_history").css("display","none");
         $("#flight_details").css("display","block");
     });
+
+
+
     $('#submit_details').click(function () {
         $('#submit_details').html("Loading...");
         var obj={ };
@@ -217,8 +246,13 @@
             }
         });
     });
+
+
+
+
     $("#get_flights").click(function () {
         $("#flight_details").css("display","none");
+        $("#booking_history").css("display","none");
         $("#all_flights").css("display","block");
         $('#flight-table').html("Loading...");
         $.post('/getflights',function (data,status) {
@@ -244,6 +278,9 @@
             $("#flight-table").html(str);
         });
     });
+
+
+
     function func(x) {
         console.log(x);
         var arr = JSON.parse(localStorage.getItem('flights'));
@@ -252,6 +289,63 @@
             alert("Flight Deleted from database");
         });
     }
+
+
+    $("#get_bookings").click(function () {
+        $("#flight_details").css("display","none");
+        $("#all_flights").css("display","none");
+        $("#booking_history").css("display","block");
+
+        $("#bookings_table").html("Loading..");
+        $.post('/bookings-history',function(data,status){
+            var obj  = JSON.parse(JSON.stringify(data));
+            var customer = obj.customers;
+            var bookings = obj.bookings;
+            var flights = obj.flights;
+//            console.log(customer);
+//            console.log(flights);
+//            console.log(bookings);
+
+            var arr=[];
+            for(var i=0;i<bookings.length;i++){
+                var j=0;
+                while(bookings[i].customerId != customer[j].customerId){j++;}
+                var k=0;
+                while(bookings[i].FlightId != flights[k].flightId){k++;}
+                var temp = {};
+                temp.customerId = bookings[i].customerId;
+                temp.customername = customer[j].username;
+                temp.flightId = bookings[i].FlightId;
+                temp.source = flights[k].source;
+                temp.destination = flights[k].destination;
+                temp.fare = flights[k].fare;
+                temp.date = flights[k].date;
+                temp.arrival = flights[k].timeOfArrival;
+                temp.departure = flights[k].timeOfDeparture;
+                arr.push(temp);
+            }
+
+
+            var str='';
+            for( i=0;i<arr.length;i++){
+                str += '<tr>';
+                str += '<td>'  + arr[i].customerId+ '</td>';
+                str += '<td>'  + arr[i].customername+ '</td>';
+                str += '<td>'  + arr[i].flightId+ '</td>';
+                str += '<td>'  + arr[i].source+ '</td>';
+                str += '<td>'  + arr[i].destination+ '</td>';
+                str += '<td>'  + arr[i].arrival+ '</td>';
+                str += '<td>'  + arr[i].departure+ '</td>';
+                str += '<td>'  + arr[i].fare+ '</td>';
+                str += '<td>'  + arr[i].date+ '</td>';
+                str += '</tr>';
+            }
+            $("#bookings_table").html(str);
+
+        });
+    })
+
+
 </script>
 </body>
 <style>

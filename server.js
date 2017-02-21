@@ -171,6 +171,23 @@ app.post('/delete-flight',function (req,res) {
         res.end();
     })
 });
+
+
+app.post('/bookings-history',function (req,res) {
+    Bookings.getBookings(function (result) {
+        console.log(result);
+        customer.getCustomers(function (result2) {
+            flights.getAllFlightsDuplicate(function (result3) {
+                var obj  = {};
+                obj.bookings = result;
+                obj.customers = result2;
+                obj.flights = result3;
+                res.send(obj);
+            });
+        });
+
+    })
+});
 app.listen(5000, function () {
 
     console.log("Server running on port 5000");

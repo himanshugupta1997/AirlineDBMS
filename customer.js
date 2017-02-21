@@ -101,10 +101,21 @@ function Profile(obj, callback) {
 }
 
 
-module.exports = {
+function getCustomers(callback) {
 
+    mongoClient.connect(url,function (error,database) {
+        if(error)throw error;
+        var handler = database.collection('customer');
+        handler.find({}).toArray(function (err,result) {
+            database.close();
+            callback(result);
+        });
+    });
+}
+
+module.exports = {
     login : Login,
     signUp : SignUp,
-    GetProfile : Profile
-
+    GetProfile : Profile,
+    getCustomers:getCustomers
 };

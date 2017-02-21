@@ -1,5 +1,3 @@
-
-
 var mongodb = require('mongodb');
 var mongoClient = mongodb.MongoClient;
 const url = "mongodb://airline:airline@ds153689.mlab.com:53689/airlinedbms";
@@ -108,6 +106,19 @@ function getAllFlights(callback) {
     });
 }
 
+
+function getAllFlightsDuplicate(callback) {
+
+    mongoClient.connect(url,function (error,database) {
+        if(error)throw error;
+        var handler = database.collection('flight-duplicate');
+        handler.find({}).toArray(function (err,result) {
+            database.close();
+            callback(result);
+        });
+    });
+}
+
 function deleteFLight(id,callback) {
     mongoClient.connect(url,function (error,database) {
         if(error)throw error;
@@ -129,5 +140,6 @@ module.exports = {
     GetDetailsById : GetDetailsUsingId,
     BookFlight : BookFlight,
     getAllFlights:getAllFlights,
-    deleteFLight:deleteFLight
+    deleteFLight:deleteFLight,
+    getAllFlightsDuplicate:getAllFlightsDuplicate
 };
