@@ -11,10 +11,13 @@
 </head>
 <body>
 <nav class="light-blue darken-4">
-    <div class="navbar-wrapper  ">
-        <a href="/" class="brand-logo" STYLE="left:5px">Airline</a>
+    <div class="navbar-wrapper ">
+        <a href="/" class="brand-logo left" STYLE="left:5px">Airline</a>
+
         <ul class="right brand-logo">
-            <a href="index.html">Logout</a></ul>
+            <li class="active"><a href="#">My Profile</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
     </div>
 </nav>
 <br/><br/>
@@ -30,7 +33,7 @@
                     </div>
                 </div>
 
-                <div class="col s12 m6 l6 card-content red-text" id="details">
+                <div class="col s12 m6 l6 card-content grey-text" id="details">
 
                 </div>
 
@@ -99,12 +102,12 @@
                 {
 
                     var str = '';
-                    str += '<h5>';
-                    str += 'Username : ';
-                    str += data.user.username + '<br>' + '<br>';
-                    str += 'Phone : ';
+                    str += '<h5> <b>';
+                    str += 'Username : </b>';
+                    str += data.user.username + ' <br>' + '<br>';
+                    str += '<b> Phone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b> ';
                     str += data.user.phone;
-                    str += '</h5>';
+                    str += ' </h5>';
                     $('#details').html(str);
 
 
