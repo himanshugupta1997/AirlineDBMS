@@ -159,6 +159,18 @@ app.post('/flight/book', function (req, res) {
 
 });
 
+app.post('/getflights',function (req,res) {
+    flights.getAllFlights(function (result) {
+        res.send(result);
+    })
+});
+
+app.post('/delete-flight',function (req,res) {
+
+    flights.deleteFLight(req.body.id,function (err,result) {
+        res.end();
+    })
+});
 app.listen(5000, function () {
 
     console.log("Server running on port 5000");

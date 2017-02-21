@@ -40,5 +40,4 @@ function AddBookings(customerId, FlightId, callback) {
 module.exports = {
 
     AddBooking : AddBookings
-
 };

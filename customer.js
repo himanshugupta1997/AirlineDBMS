@@ -33,19 +33,13 @@ function Login(obj, callback) {
                 callback(2, docs[0].customerId); // Correctness;
             }
 
-
         });
     });
-
-
 }
 
 function SignUp(obj, callback) {
 
     mongoClient.connect(url, function (err, db) {
-
-
-
         var handler = db.collection('customer');
         handler.find({}).toArray(function (err, docs) {
 
@@ -72,11 +66,8 @@ function SignUp(obj, callback) {
                 }
 
             })
-
         });
-
     });
-
 }
 
 function Profile(obj, callback) {
