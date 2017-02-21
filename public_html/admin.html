@@ -11,7 +11,7 @@
 <body style="display: none">
 <nav class="light-blue darken-4">
     <div class="navbar-wrapper ">
-            <a href="#" class="left brand-logo" STYLE="left:5px">Admin Portal</a>
+        <a href="#" class="left brand-logo" STYLE="left:5px">Admin Portal</a>
         <ul class="right brand-logo">
             <a href="index.html">Logout</a></ul>
     </div>
@@ -30,92 +30,89 @@
 
 
     <!-- ADD FLIGHTS  !--->
-
-
-
     <div class="container" style="display: none" id="flight_details">
-    <div class="row">
-                        <div class="col s12 l3 m3"></div>
-                        <div class="col s12 l6 m6">
-                            <div class="input-field">
-                                <label class="active" for="Flight_Id">FLIGHT ID</label>
-                                <input type="text" name="Flight Id" id="Flight_Id" class="form-control input-lg"  required>
-                            </div>
-                        </div>
-                        <div class="col s12 l3 m3"></div>
-    </div>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3">
-                            <div class="input-field">
-                                <label class="active" for="source">SOURCE</label>
-                                <select class="form-control" id="source">
-                                    <option value="DELHI">DELHI</option>
-                                    <option value="MUMBAI">MUMBAI</option>
-                                    <option value="CHENNAI">CHENNAI</option>
-                                    <option value="KOLKATA">KOLKATA</option>
-                                    <option value="BANGALORE">BANGALORE</option>
-                                    <option value="LUCKNOW">LUCKNOW</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3">
-                            <div class="input-field">
-                                <label class="active" for="destination">DESTINATION</label>
-                                <select class="form-control" id="destination">
-                                    <option value="DELHI">DELHI</option>
-                                    <option value="MUMBAI">MUMBAI</option>
-                                    <option value="CHENNAI">CHENNAI</option>
-                                    <option value="KOLKATA">KOLKATA</option>
-                                    <option value="BANGALORE">BANGALORE</option>
-                                    <option value="LUCKNOW">LUCKNOW</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="depart_time">DEPARTURE TIME</label>
-                            <input type="TIME" name="depart_time" id="depart_time" class="form-control input-lg"  required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="arrival_time">ARRIVAL TIME</label>
-                            <input type="TIME" name="arrival_time" id="arrival_time" class="form-control input-lg" required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="fare">FARE</label>
-                            <input type="number" name="fare" id="fare" class="form-control input-lg"   required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="date">DATE</label>
-                            <input type="date" name="date" id="date" class="form-control input-lg" required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="total_seats">TOTAL SEATS</label>
-                            <input type="number" name="total_seats" id="total_seats" class="form-control input-lg"   required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col l3 m3 s12 input-field">
-                            <label class="active" for="total_seats_avl">TOTAL AVAILABLE SEATS</label>
-                            <input type="number" name="total_seats_avl" id="total_seats_avl" class="form-control input-lg"  required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
+        <div class="row">
+            <div class="col s12 l3 m3"></div>
+            <div class="col s12 l6 m6">
+                <div class="input-field">
+                    <label class="active" for="Flight_Id">FLIGHT ID</label>
+                    <input type="text" name="Flight Id" id="Flight_Id" class="form-control input-lg"  required>
+                </div>
+            </div>
+            <div class="col s12 l3 m3"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3">
+                <div class="input-field">
+                    <label class="active" for="source">SOURCE</label>
+                    <select class="form-control" id="source">
+                        <option value="DELHI">DELHI</option>
+                        <option value="MUMBAI">MUMBAI</option>
+                        <option value="CHENNAI">CHENNAI</option>
+                        <option value="KOLKATA">KOLKATA</option>
+                        <option value="BANGALORE">BANGALORE</option>
+                        <option value="LUCKNOW">LUCKNOW</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3">
+                <div class="input-field">
+                    <label class="active" for="destination">DESTINATION</label>
+                    <select class="form-control" id="destination">
+                        <option value="DELHI">DELHI</option>
+                        <option value="MUMBAI">MUMBAI</option>
+                        <option value="CHENNAI">CHENNAI</option>
+                        <option value="KOLKATA">KOLKATA</option>
+                        <option value="BANGALORE">BANGALORE</option>
+                        <option value="LUCKNOW">LUCKNOW</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="depart_time">DEPARTURE TIME</label>
+                <input type="TIME" name="depart_time" id="depart_time" class="form-control input-lg"  required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="arrival_time">ARRIVAL TIME</label>
+                <input type="TIME" name="arrival_time" id="arrival_time" class="form-control input-lg" required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="fare">FARE</label>
+                <input type="number" name="fare" id="fare" class="form-control input-lg"   required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="date">DATE</label>
+                <input type="date" name="date" id="date" class="form-control input-lg" required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="total_seats">TOTAL SEATS</label>
+                <input type="number" name="total_seats" id="total_seats" class="form-control input-lg"   required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col l3 m3 s12 input-field">
+                <label class="active" for="total_seats_avl">TOTAL AVAILABLE SEATS</label>
+                <input type="number" name="total_seats_avl" id="total_seats_avl" class="form-control input-lg"  required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
         <br>
         <div class="row">
             <div class="col s12 l5 m5"></div>
@@ -123,13 +120,9 @@
                 <div class="btn btn-block green" id="submit_details">SUBMIT</div>
             </div>
             <div class="col s12 l5 m5"></div>
+        </div>
+        <br>
     </div>
-    <br>
-</div>
-
-
-
-
     <!-- ALL FLIGHT DETAILS  !-->
 
 
@@ -166,23 +159,17 @@
 
 
     <!--BOOKINGS HISTORY!--->
-
-
     <div class="container">
         <div class="row">
             <div class="col sm12 m2 l2"></div>
             <div class="col sm12 m8 l8">
-
             </div>
             <div class="col sm12 m2 l2"></div>
-
         </div>
     </div>
 </div>
 <script>
-
     $(function () {
-
         $(".button-collapse").sideNav();
         $('select').material_select();
         var val = prompt("Enter Admin Password");
@@ -194,12 +181,10 @@
             $("body").css('display','block');
         }
     });
-
     $('#add_flight').click(function () {
         $("#all_flights").css("display","none");
         $("#flight_details").css("display","block");
     });
-
     $('#submit_details').click(function () {
         $('#submit_details').html("Loading...");
         var obj={ };
@@ -218,7 +203,6 @@
             alert("Source and Destination cannot be same");
             return;
         }
-
         $.post('/check',{flightId:obj.flightId},function (data,status) {
             if(data=="no"){
                 alert("Flight Id already used");
@@ -233,13 +217,9 @@
             }
         });
     });
-
-
-
     $("#get_flights").click(function () {
         $("#flight_details").css("display","none");
         $("#all_flights").css("display","block");
-
         $.post('/getflights',function (data,status) {
             localStorage.clear();
             var arr  = JSON.parse(JSON.stringify(data));
@@ -263,19 +243,15 @@
             $("#flight-table").html(str);
         });
     });
-
     function func(x) {
         console.log(x);
         var arr = JSON.parse(localStorage.getItem('flights'));
         $("#td"+x).css('text-decoration','line-through');
-      $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {});
+        $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {});
     }
-
-
 </script>
 </body>
 <style>
-
     .container
     {
         width: 100%;
@@ -284,6 +260,5 @@
     {
         width: 100%;
     }
-
 </style>
 </html>
