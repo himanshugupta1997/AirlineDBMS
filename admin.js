@@ -1,4 +1,3 @@
-
 const  mongodb = require('mongodb');
 const mongoClient = mongodb.MongoClient;
 const assert = require('assert');
@@ -20,12 +19,40 @@ function addFLight(details,callback) {
                 date:details.date
             },function (error,result) {
                 assert.equal(error,null);
-                database.close();
-                callback(1);
+                flightDup(details,database,function (result) {
+                    database.close();
+                    callback(1);
+                });
             }
         )
     })
 }
+
+
+
+function flightDup(details,database,callback)
+{
+    var handler = database.collection('flight-duplicate');
+
+    handler.insertOne(
+        {
+            flightId:details.flightId,
+            source:details.source,
+            destination:details.destination,
+            fare:details.fare,
+            timeOfDeparture:details.timeOfDeparture,
+            timeOfArrival:details.timeOfArrival,
+            totalSeats:details.totalSeats,
+            totalAvailable:details.totalAvailable,
+            date:details.date
+        },function (error,result) {
+            assert.equal(error,null);
+            callback();
+        }
+    );
+
+}
+
 
 function checkFlight(obj,callback)
 {
@@ -41,7 +68,6 @@ function checkFlight(obj,callback)
                 db.close();
                 callback(1);
             }
-
             else
             {
                 db.close();

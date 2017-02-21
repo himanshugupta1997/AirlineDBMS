@@ -11,7 +11,7 @@
 <body style="display: none">
 <nav class="light-blue darken-4">
     <div class="navbar-wrapper ">
-            <a href="#" class="left brand-logo" STYLE="left:5px">Admin Portal</a>
+        <a href="#" class="left brand-logo" STYLE="left:5px">Admin Portal</a>
         <ul class="right brand-logo">
             <a href="index.html">Logout</a></ul>
     </div>
@@ -30,92 +30,89 @@
 
 
     <!-- ADD FLIGHTS  !--->
-
-
-
     <div class="container" style="display: none" id="flight_details">
-    <div class="row">
-                        <div class="col s12 l3 m3"></div>
-                        <div class="col s12 l6 m6">
-                            <div class="input-field">
-                                <label class="active" for="Flight_Id">FLIGHT ID</label>
-                                <input type="text" name="Flight Id" id="Flight_Id" class="form-control input-lg"  required>
-                            </div>
-                        </div>
-                        <div class="col s12 l3 m3"></div>
-    </div>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3">
-                            <div class="input-field">
-                                <label class="active" for="source">SOURCE</label>
-                                <select class="form-control" id="source">
-                                    <option value="DELHI">DELHI</option>
-                                    <option value="MUMBAI">MUMBAI</option>
-                                    <option value="CHENNAI">CHENNAI</option>
-                                    <option value="KOLKATA">KOLKATA</option>
-                                    <option value="BANGALORE">BANGALORE</option>
-                                    <option value="LUCKNOW">LUCKNOW</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3">
-                            <div class="input-field">
-                                <label class="active" for="destination">DESTINATION</label>
-                                <select class="form-control" id="destination">
-                                    <option value="DELHI">DELHI</option>
-                                    <option value="MUMBAI">MUMBAI</option>
-                                    <option value="CHENNAI">CHENNAI</option>
-                                    <option value="KOLKATA">KOLKATA</option>
-                                    <option value="BANGALORE">BANGALORE</option>
-                                    <option value="LUCKNOW">LUCKNOW</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="depart_time">DEPARTURE TIME</label>
-                            <input type="TIME" name="depart_time" id="depart_time" class="form-control input-lg"  required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="arrival_time">ARRIVAL TIME</label>
-                            <input type="TIME" name="arrival_time" id="arrival_time" class="form-control input-lg" required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="fare">FARE</label>
-                            <input type="number" name="fare" id="fare" class="form-control input-lg"   required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="date">DATE</label>
-                            <input type="date" name="date" id="date" class="form-control input-lg" required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col s12 l3 m3 input-field">
-                            <label class="active" for="total_seats">TOTAL SEATS</label>
-                            <input type="number" name="total_seats" id="total_seats" class="form-control input-lg"   required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                        <div class="col l3 m3 s12 input-field">
-                            <label class="active" for="total_seats_avl">TOTAL AVAILABLE SEATS</label>
-                            <input type="number" name="total_seats_avl" id="total_seats_avl" class="form-control input-lg"  required>
-                        </div>
-                        <div class="col s12 l2 m2"></div>
-                    </div>
+        <div class="row">
+            <div class="col s12 l3 m3"></div>
+            <div class="col s12 l6 m6">
+                <div class="input-field">
+                    <label class="active" for="Flight_Id">FLIGHT ID</label>
+                    <input type="text" name="Flight Id" id="Flight_Id" class="form-control input-lg"  required>
+                </div>
+            </div>
+            <div class="col s12 l3 m3"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3">
+                <div class="input-field">
+                    <label class="active" for="source">SOURCE</label>
+                    <select class="form-control" id="source">
+                        <option value="DELHI">DELHI</option>
+                        <option value="MUMBAI">MUMBAI</option>
+                        <option value="CHENNAI">CHENNAI</option>
+                        <option value="KOLKATA">KOLKATA</option>
+                        <option value="BANGALORE">BANGALORE</option>
+                        <option value="LUCKNOW">LUCKNOW</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3">
+                <div class="input-field">
+                    <label class="active" for="destination">DESTINATION</label>
+                    <select class="form-control" id="destination">
+                        <option value="DELHI">DELHI</option>
+                        <option value="MUMBAI">MUMBAI</option>
+                        <option value="CHENNAI">CHENNAI</option>
+                        <option value="KOLKATA">KOLKATA</option>
+                        <option value="BANGALORE">BANGALORE</option>
+                        <option value="LUCKNOW">LUCKNOW</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="depart_time">DEPARTURE TIME</label>
+                <input type="TIME" name="depart_time" id="depart_time" class="form-control input-lg"  required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="arrival_time">ARRIVAL TIME</label>
+                <input type="TIME" name="arrival_time" id="arrival_time" class="form-control input-lg" required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="fare">FARE</label>
+                <input type="number" name="fare" id="fare" class="form-control input-lg"   required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="date">DATE</label>
+                <input type="date" name="date" id="date" class="form-control input-lg" required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col s12 l2 m2"></div>
+            <div class="col s12 l3 m3 input-field">
+                <label class="active" for="total_seats">TOTAL SEATS</label>
+                <input type="number" name="total_seats" id="total_seats" class="form-control input-lg"   required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+            <div class="col l3 m3 s12 input-field">
+                <label class="active" for="total_seats_avl">TOTAL AVAILABLE SEATS</label>
+                <input type="number" name="total_seats_avl" id="total_seats_avl" class="form-control input-lg"  required>
+            </div>
+            <div class="col s12 l2 m2"></div>
+        </div>
         <br>
         <div class="row">
             <div class="col s12 l5 m5"></div>
@@ -123,13 +120,9 @@
                 <div class="btn btn-block green" id="submit_details">SUBMIT</div>
             </div>
             <div class="col s12 l5 m5"></div>
+        </div>
+        <br>
     </div>
-    <br>
-</div>
-
-
-
-
     <!-- ALL FLIGHT DETAILS  !-->
 
 
@@ -167,24 +160,41 @@
 
     <!--BOOKINGS HISTORY!--->
 
-
-    <div class="container">
+    <div class="container" id="booking_history" style="display: none">
         <div class="row">
-            <div class="col sm12 m2 l2"></div>
-            <div class="col sm12 m8 l8">
-
+            <div class="col sm12 m1 l1"></div>
+            <div class="col sm12 m10 l10">
+                <table class="bordered  centered" >
+                    <thead>
+                    <tr>
+                        <th>Customer Id</th>
+                        <th>Customer Name</th>
+                        <th>Flight Id</th>
+                        <th >Source</th>
+                        <th >Destination</th>
+                        <th>Arrival</th>
+                        <th>Departure</th>
+                        <th>Fare</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody id="bookings_table">
+                    </tbody>
+                </table>
             </div>
-            <div class="col sm12 m2 l2"></div>
-
+            <div class="col sm12 m1 l1"></div>
         </div>
     </div>
 </div>
 <script>
 
-    $(function () {
 
+
+    $(function () {
+        $("body").css('display','block');
         $(".button-collapse").sideNav();
         $('select').material_select();
+        /*
         var val = prompt("Enter Admin Password");
         if(val!='ADMIN'){
             alert("Invalid Password Redirecting to home page");
@@ -192,13 +202,17 @@
         }
         else {
             $("body").css('display','block');
-        }
+        }*/
     });
+
 
     $('#add_flight').click(function () {
         $("#all_flights").css("display","none");
+        $("#booking_history").css("display","none");
         $("#flight_details").css("display","block");
     });
+
+
 
     $('#submit_details').click(function () {
         $('#submit_details').html("Loading...");
@@ -218,7 +232,6 @@
             alert("Source and Destination cannot be same");
             return;
         }
-
         $.post('/check',{flightId:obj.flightId},function (data,status) {
             if(data=="no"){
                 alert("Flight Id already used");
@@ -236,11 +249,12 @@
 
 
 
+
     $("#get_flights").click(function () {
         $("#flight_details").css("display","none");
+        $("#booking_history").css("display","none");
         $("#all_flights").css("display","block");
         $('#flight-table').html("Loading...");
-
         $.post('/getflights',function (data,status) {
             localStorage.clear();
             var arr  = JSON.parse(JSON.stringify(data));
@@ -266,22 +280,75 @@
     });
 
 
+
     function func(x) {
         console.log(x);
         var arr = JSON.parse(localStorage.getItem('flights'));
         $("#td"+x).css('text-decoration','line-through');
-      $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {
-
-          alert("Flight Deleted from database");
-
-      });
+        $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {
+            alert("Flight Deleted from database");
+        });
     }
+
+
+    $("#get_bookings").click(function () {
+        $("#flight_details").css("display","none");
+        $("#all_flights").css("display","none");
+        $("#booking_history").css("display","block");
+
+        $("#bookings_table").html("Loading..");
+        $.post('/bookings-history',function(data,status){
+            var obj  = JSON.parse(JSON.stringify(data));
+            var customer = obj.customers;
+            var bookings = obj.bookings;
+            var flights = obj.flights;
+//            console.log(customer);
+//            console.log(flights);
+//            console.log(bookings);
+
+            var arr=[];
+            for(var i=0;i<bookings.length;i++){
+                var j=0;
+                while(bookings[i].customerId != customer[j].customerId){j++;}
+                var k=0;
+                while(bookings[i].FlightId != flights[k].flightId){k++;}
+                var temp = {};
+                temp.customerId = bookings[i].customerId;
+                temp.customername = customer[j].username;
+                temp.flightId = bookings[i].FlightId;
+                temp.source = flights[k].source;
+                temp.destination = flights[k].destination;
+                temp.fare = flights[k].fare;
+                temp.date = flights[k].date;
+                temp.arrival = flights[k].timeOfArrival;
+                temp.departure = flights[k].timeOfDeparture;
+                arr.push(temp);
+            }
+
+
+            var str='';
+            for( i=0;i<arr.length;i++){
+                str += '<tr>';
+                str += '<td>'  + arr[i].customerId+ '</td>';
+                str += '<td>'  + arr[i].customername+ '</td>';
+                str += '<td>'  + arr[i].flightId+ '</td>';
+                str += '<td>'  + arr[i].source+ '</td>';
+                str += '<td>'  + arr[i].destination+ '</td>';
+                str += '<td>'  + arr[i].arrival+ '</td>';
+                str += '<td>'  + arr[i].departure+ '</td>';
+                str += '<td>'  + arr[i].fare+ '</td>';
+                str += '<td>'  + arr[i].date+ '</td>';
+                str += '</tr>';
+            }
+            $("#bookings_table").html(str);
+
+        });
+    })
 
 
 </script>
 </body>
 <style>
-
     .container
     {
         width: 100%;
@@ -290,6 +357,5 @@
     {
         width: 100%;
     }
-
 </style>
 </html>
