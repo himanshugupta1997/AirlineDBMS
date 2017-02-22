@@ -96,7 +96,7 @@
                 if(data.result == 0)
                 {
                     alert("invalid authentication");
-                    window.location.href = "index.html";
+                    window.location.href = "login.html";
                 }
                 else
                 {
@@ -109,11 +109,7 @@
                     str += data.user.phone;
                     str += ' </h5>';
                     $('#details').html(str);
-
-
-
                 }
-
         });
         }
 

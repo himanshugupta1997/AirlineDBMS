@@ -5,13 +5,16 @@
 
 var mongodb = require('mongodb');
 const mongoClient = mongodb.MongoClient;
-const url = "mongodb://airline:airline@ds153689.mlab.com:53689/airlinedbms";
+const url = 'mongodb://localhost:27017/myproject';
 
 // Write your functions here and remember to export them.
 
 function Login(obj, callback) {
 
     mongoClient.connect(url, function (err, db) {
+
+        if(err)
+            throw err;
 
         var handler = db.collection('customer');
         handler.find({username : obj.username}).toArray(function (err, docs) {
@@ -40,6 +43,11 @@ function Login(obj, callback) {
 function SignUp(obj, callback) {
 
     mongoClient.connect(url, function (err, db) {
+
+
+        if(err)
+            throw err;
+
         var handler = db.collection('customer');
         handler.find({}).toArray(function (err, docs) {
 
@@ -99,7 +107,6 @@ function Profile(obj, callback) {
 
     });
 }
-
 
 function getCustomers(callback) {
 

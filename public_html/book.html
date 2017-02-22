@@ -76,6 +76,7 @@
             if(id == '' || id == null)
             {
                 alert("Please enter flight id to continue");
+                $('#get_details').html("Get Details");
                 return;
             }
 
@@ -125,6 +126,7 @@
             if(id == '' || id == null)
             {
                 alert("Please enter flight id to continue");
+                $('#book').html("Book Flight");
                 return;
             }
 
@@ -145,6 +147,7 @@
                 else
                 {
                     alert("Congrats! Flight Booked");
+                    window.location = ""; // Reloading...
                 }
                 $('#book').html("Book Flight");
 

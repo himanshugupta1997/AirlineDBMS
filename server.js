@@ -12,7 +12,7 @@ var customer = require('./customer');
 var admin  =require('./admin');
 var flights = require('./flights');
 // Admin requests
-
+const url = 'mongodb://localhost:27017/myproject';
 app.post('/add_flight',function (req,res) {
     admin.addFlight(req.body,function (result) {
         res.end();
@@ -188,6 +188,80 @@ app.post('/bookings-history',function (req,res) {
 
     })
 });
+
+app.post('/flights/checkBooking', function (req, res) {
+
+    Bookings.CheckBooking(req.body.id, function (result) {
+
+        res.send({
+            result : result
+        });
+
+    });
+
+
+});
+
+/*
+var mongod = require('mongodb');
+var MongoClient = mongod.MongoClient;
+
+MongoClient.connect(url , function (err, db) {
+
+    if(err)
+        throw err;
+
+    var handler = db.collection('flight');
+
+    handler.deleteMany({}, function (err, r) {
+
+        if(err)
+            throw err;
+
+        console.log("Deleted");
+        console.log(r);
+
+    });
+    handler = db.collection('customer');
+
+    handler.deleteMany({}, function (err, r) {
+
+        if(err)
+            throw err;
+
+        console.log("Deleted");
+        console.log(r);
+
+    });
+    handler = db.collection('flight-duplicate');
+
+    handler.deleteMany({}, function (err, r) {
+
+        if(err)
+            throw err;
+
+        console.log("Deleted");
+        console.log(r);
+
+    });
+    handler = db.collection('bookings');
+
+    handler.deleteMany({}, function (err, r) {
+
+        if(err)
+            throw err;
+
+        console.log("Deleted");
+        console.log(r);
+
+    });
+
+
+} );
+
+*/
+
+
 app.listen(5000, function () {
 
     console.log("Server running on port 5000");

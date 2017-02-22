@@ -1,7 +1,7 @@
 const  mongodb = require('mongodb');
 const mongoClient = mongodb.MongoClient;
 const assert = require('assert');
-const url = "mongodb://airline:airline@ds153689.mlab.com:53689/airlinedbms";
+const url = 'mongodb://localhost:27017/myproject';
 
 function addFLight(details,callback) {
     mongoClient.connect(url,function (error,database) {

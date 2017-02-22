@@ -1,6 +1,6 @@
 var mongodb = require('mongodb');
 var mongoClient = mongodb.MongoClient;
-const url = "mongodb://airline:airline@ds153689.mlab.com:53689/airlinedbms";
+const url = 'mongodb://localhost:27017/myproject';
 function GetDetails(obj, callback)
 {
     mongoClient.connect(url, function (err, db) {

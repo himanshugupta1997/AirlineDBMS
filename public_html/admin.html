@@ -244,14 +244,12 @@
                 $.post('/add_flight',obj,function (data,status) {
                     alert("Done. Flight Added");
                 });
-                $('#submit_details').html("SUBMIT");
+
+
             }
+            $('#submit_details').html("SUBMIT");
         });
     });
-
-
-
-
     $("#get_flights").click(function () {
         $("#flight_details").css("display","none");
         $("#booking_history").css("display","none");
@@ -277,22 +275,35 @@
                 str += '<td >'+'<div class="btn btn-block green" onclick="func('+i+')">REMOVE</div> '+'</td>';
                 str += '</tr>';
             }
+
+            if(arr.length == 0)
+                str = 'Empty Result. No record Found';
+
+
             $("#flight-table").html(str);
         });
     });
-
-
-
     function func(x) {
         console.log(x);
         var arr = JSON.parse(localStorage.getItem('flights'));
-        $("#td"+x).css('text-decoration','line-through');
-        $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {
-            alert("Flight Deleted from database");
+
+        $.post('/flights/checkBooking', {id : arr[x].flightId}, function (data, status) {
+
+            if(data.result == 0)
+            {
+                alert("Cannot be removed. There are booking on this flight");
+            }
+            else
+            {
+                $("#td"+x).css('text-decoration','line-through');
+                $.post('/delete-flight',{id:arr[x].flightId},function (data,status) {
+                    alert("Flight Deleted from database");
+                });
+            }
+
         });
+
     }
-
-
     $("#get_bookings").click(function () {
         $("#flight_details").css("display","none");
         $("#all_flights").css("display","none");
@@ -329,19 +340,22 @@
 
 
             var str='';
-            for( i=0;i<arr.length;i++){
+            for( i=0;i<arr.length;i++) {
                 str += '<tr>';
-                str += '<td>'  + arr[i].customerId+ '</td>';
-                str += '<td>'  + arr[i].customername+ '</td>';
-                str += '<td>'  + arr[i].flightId+ '</td>';
-                str += '<td>'  + arr[i].source+ '</td>';
-                str += '<td>'  + arr[i].destination+ '</td>';
-                str += '<td>'  + arr[i].arrival+ '</td>';
-                str += '<td>'  + arr[i].departure+ '</td>';
-                str += '<td>'  + arr[i].fare+ '</td>';
-                str += '<td>'  + arr[i].date+ '</td>';
+                str += '<td>' + arr[i].customerId + '</td>';
+                str += '<td>' + arr[i].customername + '</td>';
+                str += '<td>' + arr[i].flightId + '</td>';
+                str += '<td>' + arr[i].source + '</td>';
+                str += '<td>' + arr[i].destination + '</td>';
+                str += '<td>' + arr[i].arrival + '</td>';
+                str += '<td>' + arr[i].departure + '</td>';
+                str += '<td>' + arr[i].fare + '</td>';
+                str += '<td>' + arr[i].date + '</td>';
                 str += '</tr>';
             }
+            if(bookings.length == 0)
+                str = 'Empty Result. No records found';
+
             $("#bookings_table").html(str);
 
         });
